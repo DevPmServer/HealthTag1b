@@ -24,7 +24,7 @@ class Main extends PluginBase implements Listener{
         	$this->getServer()->getPluginManager()->registerEvents($this, $this);
 $this->getServer()->getScheduler()->scheduleRepeatingTask(new Health($this), 10);
 	}
-
+}
 public function Popup(){
 
       foreach($this->getServer()->getPlayer () as $player){
