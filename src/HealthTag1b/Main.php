@@ -22,10 +22,23 @@ class Main extends PluginBase implements Listener{
 
 	public function onEnable(){
         	$this->getServer()->getPluginManager()->registerEvents($this, $this);
+$this->getServer()->getScheduler()->scheduleRepeatingTask(new Health($this), 10);
 	}
-	
-	public function onMove(PlayerMoveEvent $event){
-		$player = $event->getPlayer();
-		$player->setNameTag("§e".$player->getName()."\n§l§2    ".$player->getHealth()."§c/§2".$player->getMaxHealth());
-	}
+
+public function Popup(){
+
+      foreach($this->getServer()->getPlayer () as $player){
+            $player->setNameTag("§e".$player->getName()."\n§l§2    ".$player->getHealth()."§c/§2".$player->getMaxHealth());
+
+}
+
+class Health extends PluginTask
+{
+    public function __construct(Plugin $owner) {
+        parent::__construct($owner);
+    }
+    public function onRun($currentTick){
+        $this->getOwner()->Popup();
+    }
+     
 }
